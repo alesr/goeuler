@@ -1,12 +1,15 @@
 package exercises
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestSumSquareDiff(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
 		given    int
 		expected int
@@ -22,7 +25,9 @@ func TestSumSquareDiff(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		observed := sumSquareDiff(tc.given)
-		assert.Equal(t, tc.expected, observed)
+		t.Run(fmt.Sprintf("given: '%d', expected: '%d'", tc.given, tc.expected), func(t *testing.T) {
+			observed := sumSquareDiff(tc.given)
+			assert.Equal(t, tc.expected, observed)
+		})
 	}
 }
