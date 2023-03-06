@@ -8,6 +8,8 @@ import (
 )
 
 func TestLargestPrimeFactors(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
 		given    int
 		expected int
