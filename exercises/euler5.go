@@ -7,7 +7,8 @@ package exercises
 // What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 // https://projecteuler.net/problem=5
 func smallestMultiple(n int) int {
-	smallestMultiple := 2520
+	smallestMultiple := 1
+
 	for i := 1; i <= n; i++ {
 		if smallestMultiple%i == 0 {
 			if i == n {
@@ -18,6 +19,5 @@ func smallestMultiple(n int) int {
 			i = 1
 		}
 	}
-
 	return smallestMultiple
 }
