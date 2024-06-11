@@ -1,5 +1,7 @@
 package exercises
 
+import "math"
+
 // Problem 2
 
 // Even Fibonacci numbers
@@ -7,19 +9,27 @@ package exercises
 // 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 // By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 // https://projecteuler.net/problem=2
-func evenFibonacci(n int) int {
-	firstFib, secondFib := 1, 2
-	nextFib := firstFib + secondFib
-	sum := 2
+// Constants for Binet's formula
+var (
+	sqrt5 = math.Sqrt(5)
+	phi   = (1 + sqrt5) / 2
+	psi   = (1 - sqrt5) / 2
+)
 
-	for nextFib <= n {
-		if nextFib%2 == 0 {
-			sum += nextFib
+// fibonacci returns the nth Fibonacci number using Binet's formula.
+func fibonacci(n int) uint {
+	return uint(math.Round((math.Pow(phi, float64(n)) - math.Pow(psi, float64(n))) / sqrt5))
+}
+
+// evenFibonacci calculates the sum of even Fibonacci numbers up to a given limit using Binet's formula
+func evenFibonacci(limit uint) uint {
+	var sum uint
+	for i := 3; ; i += 3 {
+		fib := fibonacci(i)
+		if fib > limit {
+			break
 		}
-
-		firstFib = secondFib
-		secondFib = nextFib
-		nextFib = firstFib + secondFib
+		sum += fib
 	}
 	return sum
 }
