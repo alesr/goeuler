@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestNstPrime(t *testing.T) {
+func TestNthPrime(t *testing.T) {
 	t.Parallel()
 
 	testCases := []struct {
@@ -26,7 +26,7 @@ func TestNstPrime(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("given: '%d', expected: '%d'", tc.given, tc.expected), func(t *testing.T) {
-			observed := nStPrime(tc.given)
+			observed := nthPrime(tc.given)
 			assert.Equal(t, tc.expected, observed)
 		})
 	}
