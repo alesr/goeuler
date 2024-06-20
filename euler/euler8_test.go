@@ -1,4 +1,4 @@
-package exercises
+package euler
 
 import (
 	"fmt"
@@ -18,13 +18,13 @@ func TestLargestProductInSeries(t *testing.T) {
 	}{
 		{
 			name:          "example",
-			givenDigits:   "euler8_input",
+			givenDigits:   input,
 			givenAdjacent: 4,
 			expected:      5832,
 		},
 		{
 			name:          "problem",
-			givenDigits:   "euler8_input",
+			givenDigits:   input,
 			givenAdjacent: 13,
 			expected:      23514624000,
 		},
