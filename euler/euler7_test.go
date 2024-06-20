@@ -1,4 +1,4 @@
-package exercises
+package euler
 
 import (
 	"fmt"
@@ -11,21 +11,26 @@ func TestNthPrime(t *testing.T) {
 	t.Parallel()
 
 	testCases := []struct {
+		name     string
 		given    int
 		expected int
 	}{
 		{
+			name:     "example",
 			given:    6,
 			expected: 13,
 		},
 		{
+			name:     "solution",
 			given:    10001,
 			expected: 104743,
 		},
 	}
 
 	for _, tc := range testCases {
-		t.Run(fmt.Sprintf("given: '%d', expected: '%d'", tc.given, tc.expected), func(t *testing.T) {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
 			observed := nthPrime(tc.given)
 			assert.Equal(t, tc.expected, observed)
 		})
@@ -82,7 +87,9 @@ func TestIsPrime(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		t.Run(fmt.Sprintf("given: '%d', expected: '%t'", tc.given, tc.expected), func(t *testing.T) {
+		t.Run(fmt.Sprintf("given: '%d'", tc.given), func(t *testing.T) {
+			t.Parallel()
+
 			observed := isPrime(tc.given)
 			assert.Equal(t, tc.expected, observed)
 		})

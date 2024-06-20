@@ -1,4 +1,4 @@
-package exercises
+package euler
 
 import (
 	"testing"
@@ -61,7 +61,11 @@ func TestIsPalindrome(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		observed := isPalindrome(tc.given)
-		assert.Equal(t, tc.expected, observed)
+		t.Run(tc.given, func(t *testing.T) {
+			t.Parallel()
+
+			observed := isPalindrome(tc.given)
+			assert.Equal(t, tc.expected, observed)
+		})
 	}
 }
